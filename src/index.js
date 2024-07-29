@@ -26,8 +26,20 @@ function setImage() {
     $circle.src = "./assets/image5.png";
   } else if (getScore() >= 100 && getScore() < 125) {
     $circle.src = "./assets/image6.png";
-  } else if (getScore() >= 125) {
+  } else if (getScore() >= 125 && getScore() < 200) {
     $circle.src = "./assets/image7.png";
+  } else if (getScore() >= 200 && getScore() < 400) {
+    $circle.src = "./assets/image8.png";
+  } else if (getScore() >= 400 && getScore() < 500) {
+    $circle.src = "./assets/image9.png";
+  } else if (getScore() >= 500 && getScore() < 750) {
+    $circle.src = "./assets/image10.png";
+  } else if (getScore() >= 750 && getScore() < 1300) {
+    $circle.src = "./assets/image11.png";
+  } else if (getScore() >= 1300 && getScore() < 5000) {
+    $circle.src = "./assets/image12.png";
+  } else if (getScore() >= 5000) {
+    $circle.src = "./assets/image13.png";
   }
 }
 
@@ -42,7 +54,7 @@ $circle.addEventListener("click", (e) => {
   const offsetX = e.clientX - rect.left - rect.width / 2;
   const offsetY = e.clientY - rect.top - rect.height / 2;
 
-  const DEG = 50;
+  const DEG = 55;
 
   const tiltX = (offsetY / rect.height) * DEG;
   const tiltY = (offsetX / rect.width) * -DEG;
