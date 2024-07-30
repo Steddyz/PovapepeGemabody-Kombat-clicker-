@@ -1,23 +1,96 @@
+/* Стили для тёмной темы */
+:root {
+  --bg-color: #1c1f24ea;
+  --text-color: #fff;
+}
+
+.light-theme {
+  --bg-color: #fff;
+  --text-color: #1c1f24ea;
+}
+
 html,
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Arsenal SC", sans-serif;
-
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #1c1f24ea;
-  color: #fff;
+  font-family: "Arsenal SC", sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.button {
+  width: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px;
+  padding: 5px;
+  border: 1px #fff solid;
 }
 
 .header {
   display: flex;
+  margin: 0 auto;
+
+  height: 50px;
+  color: #fff;
+}
+
+.header-container {
+  display: flex;
+  background-color: #000;
+
+  border-bottom: 3px solid #ffffff;
+}
+
+.header__wrapper {
+  display: flex;
+  width: 1400px;
+  align-items: center;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+  color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.upgrade {
+  margin: 5px;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+
+  border-radius: 5px;
+
+  transition: all 0.2s ease-in;
+}
+
+.upgrade:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.header__game {
+  display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
+}
+
+.coin {
+  width: 90px;
+  height: 90px;
 }
 
 .header img {
@@ -76,5 +149,67 @@ body {
   100% {
     opacity: 0;
     transform: translateY(-50px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    width: 1400px;
+  }
+
+  .circle img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .header {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .circle img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .upgrade {
+    margin-right: 700px;
+  }
+
+  .header__wrapper {
+    min-width: 270px;
+  }
+
+  .header {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .header img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .score {
+    font-size: 24px;
+  }
+
+  .circle img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .plus-one {
+    font-size: 18px;
+  }
+
+  .coin {
+    width: 70px;
+    height: 70px;
   }
 }

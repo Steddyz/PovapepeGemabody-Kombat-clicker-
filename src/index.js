@@ -1,9 +1,25 @@
 const $circle = document.querySelector("#circle");
 const $score = document.querySelector("#score");
+const $upgradeButton = document.querySelector("#upgrade");
+const themeToggleButton = document.querySelector("#themeToggleButton");
+
+let clickMultiplier = 1;
+let totalClicks = 0;
+
+let isDarkTheme = true;
+const body = document.body;
+
+function toggleTheme() {
+  body.classList.toggle("light-theme");
+  isDarkTheme = !isDarkTheme;
+}
+
+themeToggleButton.addEventListener("click", toggleTheme);
 
 function start() {
   setScore(getScore());
   setImage();
+  setClickMultiplier(getClickMultiplier());
 }
 
 function setScore(score) {
@@ -12,7 +28,15 @@ function setScore(score) {
 }
 
 function getScore() {
-  return Number(localStorage.getItem("score")) ?? 0;
+  return Number(localStorage.getItem("score")) || 0;
+}
+
+function getClickMultiplier() {
+  return Number(localStorage.getItem("clickMultiplier")) || 1;
+}
+
+function setClickMultiplier(multiplier) {
+  return (clickMultiplier = multiplier);
 }
 
 function setImage() {
@@ -44,7 +68,8 @@ function setImage() {
 }
 
 function addOne() {
-  setScore(getScore() + 1);
+  setScore(getScore() + clickMultiplier);
+  totalClicks += clickMultiplier;
   setImage();
 }
 
@@ -54,7 +79,7 @@ $circle.addEventListener("click", (e) => {
   const offsetX = e.clientX - rect.left - rect.width / 2;
   const offsetY = e.clientY - rect.top - rect.height / 2;
 
-  const DEG = 55;
+  const DEG = 50;
 
   const tiltX = (offsetY / rect.height) * DEG;
   const tiltY = (offsetX / rect.width) * -DEG;
@@ -63,13 +88,13 @@ $circle.addEventListener("click", (e) => {
   $circle.style.setProperty("--tiltY", `${tiltY}deg`);
 
   setTimeout(() => {
-    $circle.style.setProperty("--tiltX", `0deg`);
-    $circle.style.setProperty("--tiltY", `0deg`);
+    $circle.style.setProperty("--tiltX", "0deg");
+    $circle.style.setProperty("--tiltY", "0deg");
   }, 300);
 
   const plusOne = document.createElement("div");
   plusOne.classList.add("plus-one");
-  plusOne.textContent = "+1";
+  plusOne.textContent = `${clickMultiplier}`;
   plusOne.style.left = `${e.clientX - rect.left}px`;
   plusOne.style.top = `${e.clientY - rect.top}px`;
 
@@ -80,6 +105,18 @@ $circle.addEventListener("click", (e) => {
   setTimeout(() => {
     plusOne.remove();
   }, 1000);
+});
+
+$upgradeButton.addEventListener("click", () => {
+  if (totalClicks >= 100) {
+    totalClicks -= 100;
+    clickMultiplier = clickMultiplier + 1;
+    localStorage.setItem("clickMultiplier", clickMultiplier);
+    setScore(getScore() - 100);
+    alert("Улучшение куплено!");
+  } else {
+    alert("Недостаточно средств для покупки улучшения.(Стоимость 1000)");
+  }
 });
 
 start();

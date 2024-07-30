@@ -6,18 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Povapepe Combat</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   </head>
   <body>
-    <div class="game">
-      <p>PovapepeGemabody Kombat</p>
-      <div class="header">
-        <img src="./assets/coin.png" alt="coin" />
-        <h2 class="score" id="score">0</h2>
-      </div>
-      <div class="circle">
-        <img src="./assets/image1.png" alt="frog" id="circle" />
-      </div>
+    <div class="header-container">
+      <header class="header">
+        <div class="header__wrapper">
+          <button id="themeToggleButton" class="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              style="fill: rgb(255, 255, 255); transform: ; msfilter: "
+            >
+              <path
+                d="M8 9c-1.628 0-3 1.372-3 3s1.372 3 3 3 3-1.372 3-3-1.372-3-3-3z"
+              ></path>
+              <path
+                d="M16 6H8c-3.3 0-5.989 2.689-6 6v.016A6.01 6.01 0 0 0 8 18h8a6.01 6.01 0 0 0 6-5.994V12c-.009-3.309-2.699-6-6-6zm0 10H8a4.006 4.006 0 0 1-4-3.99C4.004 9.799 5.798 8 8 8h8c2.202 0 3.996 1.799 4 4.006A4.007 4.007 0 0 1 16 16zm4-3.984.443-.004.557.004h-1z"
+              ></path>
+            </svg>
+          </button>
+          <p>Switch theme</p>
+        </div>
+        <button class="upgrade" id="upgrade">Upgrade Click</button>
+      </header>
     </div>
+    <main class="game">
+      <div class="wrapper">
+        <p>PovapepeGemabody Kombat</p>
+        <div class="header__game">
+          <img src="./assets/coin.png" alt="coin" class="coin" />
+          <h2 class="score" id="score">0</h2>
+        </div>
+        <div class="circle">
+          <img src="./assets/image1.png" alt="frog" id="circle" />
+        </div>
+      </div>
+    </main>
 
     <script src="./index.js" defer></script>
   </body>
